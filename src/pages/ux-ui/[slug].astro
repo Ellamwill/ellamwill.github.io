@@ -1,0 +1,7 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+import { projects } from '../../data/projects';
+export function getStaticPaths() { return projects.filter(p => p.category === 'ux-ui').map(project => ({ params: { slug: project.slug }, props: { project } })); }
+const { project } = Astro.props;
+---
+<CaseStudy project={project} />

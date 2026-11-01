@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import { asset } from '../data/assets';
+import type { Figure } from '../data/types';
+interface Props { figure: Figure; eager?: boolean; }
+const { figure, eager = false } = Astro.props;
+const image = asset(figure.image);
+const widths = [...new Set([320, 640, 1000, 1600, image.width].filter(width => width <= image.width))].sort((a, b) => a - b);
+---
+<figure class="case-figure">
+  <a class="image-enlarge" href={image.src} data-enlarge data-width={image.width} data-height={image.height} data-caption={figure.caption} aria-label={`Enlarge image: ${figure.alt}`}>
+    <Image src={image} alt={figure.alt} widths={widths} sizes={`(max-width: 700px) 90vw, ${Math.min(image.width, 850)}px`} style={`--native-width: ${image.width}px; --image-ratio: ${image.width / image.height}`} loading={eager ? 'eager' : 'lazy'} />
+    <span class="enlarge-label" aria-hidden="true">View larger ↗</span>
+  </a>
+  {figure.caption && <figcaption>{figure.caption}</figcaption>}
+</figure>

@@ -1,0 +1,134 @@
+---
+import '../styles/global.css';
+import '../styles/refinements.css';
+import { profile } from '../data/profile';
+import headingFont from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
+import bodyFont from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+const { title = 'Ella M Williams — UX/UI Designer', description = 'UX/UI design by Ella M Williams, bringing a graphic design foundation to user journeys, wireframes and thoughtful interfaces.', active = 'work' } = Astro.props;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3f2ec" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={headingFont} as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href={bodyFont} as="font" type="font/woff2" crossorigin="anonymous" />
+    <script is:inline>
+      (() => {
+        let preference;
+        try { preference = localStorage.getItem('ella-theme'); } catch {}
+        const dark = preference === 'dark' || (preference !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Ella M Williams — home"><span class="brand-mark" aria-hidden="true">e<span>m</span><span>w</span></span><span class="brand-name">Ella M Williams<span>UX/UI designer</span></span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/" data-work-link aria-current={active === 'work' ? 'page' : undefined}>Work<span class="nav-dot" aria-hidden="true"></span></a>
+        <a href="/about/" aria-current={active === 'about' ? 'page' : undefined}>About<span class="nav-dot" aria-hidden="true"></span></a>
+      </nav>
+      <div class="header-actions">
+        <span class="theme-toggle-slot"><button class="theme-toggle" type="button" hidden aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span><span data-theme-label>Light</span></button></span>
+        <a class="contact-link" href={`mailto:${profile.email}`}>Let’s talk <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div><a class="footer-name" href="/">Ella M Williams</a><p>User-centred designer blending UX and graphic design.</p></div>
+      <a class="footer-contact" href={`mailto:${profile.email}`}>Have something in mind? <span>Let’s talk ↗</span></a>
+      <div class="footer-bottom"><span>© {new Date().getFullYear()} Ella M Williams</span><a href="#top">Back to top ↑</a></div>
+    </footer>
+    <dialog class="image-dialog" aria-labelledby="image-dialog-title">
+      <div class="dialog-toolbar"><p id="image-dialog-title">Image detail</p><button class="dialog-close" type="button" aria-label="Close image detail">Close <span aria-hidden="true">×</span></button></div>
+      <div class="dialog-viewport"><img class="dialog-image" alt="" /></div>
+      <div class="dialog-content" tabindex="0" role="region" aria-label="Image caption and original"><p class="dialog-caption"></p><a class="dialog-original text-link" target="_blank" rel="noopener">View original ↗</a></div>
+    </dialog>
+    <script is:inline>
+      // A fresh Work return has the full document here. Restore synchronously,
+      // before deferred enhancements, rather than scheduling a later correction.
+      (() => {
+        try {
+          const key = 'ella-work-restore';
+          const saved = JSON.parse(sessionStorage.getItem(key) || 'null');
+          if (!saved) return;
+          sessionStorage.removeItem(key);
+          if (!Number.isFinite(saved.at) || Date.now() - saved.at > 30000) return;
+          const url = new URL(saved.url, location.origin);
+          if (url.origin !== location.origin || !/^\/(?:$|ux-ui\/|graphic-design\/)/.test(url.pathname)) return;
+          if (url.pathname + url.search + url.hash !== location.pathname + location.search + location.hash) return;
+          if (Number.isFinite(saved.x) && Number.isFinite(saved.y)) {
+            scrollTo({ left: saved.x, top: saved.y, behavior: 'instant' });
+            document.documentElement.dataset.workRestored = 'true';
+          }
+        } catch {}
+      })();
+    </script>
+    <script>
+      import '../scripts/navigation';
+      const button = document.querySelector<HTMLButtonElement>('.theme-toggle');
+      const update = () => {
+        const dark = document.documentElement.dataset.theme === 'dark';
+        button?.setAttribute('aria-pressed', String(dark));
+        button?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} theme`);
+        const label = button?.querySelector('[data-theme-label]');
+        if (label) label.textContent = dark ? 'Dark' : 'Light';
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#191a17' : '#f3f2ec');
+      };
+      if (button) {
+        button.hidden = false;
+        update();
+        button.addEventListener('click', () => {
+          const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          document.documentElement.dataset.theme = next;
+          try { localStorage.setItem('ella-theme', next); } catch {}
+          update();
+        });
+        matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+          let saved;
+          try { saved = localStorage.getItem('ella-theme'); } catch {}
+          if (saved !== 'light' && saved !== 'dark') {
+            document.documentElement.dataset.theme = event.matches ? 'dark' : 'light'; update();
+          }
+        });
+      }
+      const dialog = document.querySelector<HTMLDialogElement>('.image-dialog');
+      const detail = dialog?.querySelector<HTMLImageElement>('.dialog-image');
+      const caption = dialog?.querySelector<HTMLElement>('.dialog-caption');
+      const original = dialog?.querySelector<HTMLAnchorElement>('.dialog-original');
+      let opener: HTMLAnchorElement | null = null;
+      if (dialog && detail && caption && typeof dialog.showModal === 'function') {
+        document.querySelectorAll<HTMLAnchorElement>('[data-enlarge]').forEach(link => link.addEventListener('click', event => {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          opener = link;
+          detail.src = link.href;
+          detail.width = Number(link.dataset.width) || 1;
+          detail.height = Number(link.dataset.height) || 1;
+          detail.alt = link.querySelector('img')?.alt || '';
+          caption.textContent = link.dataset.caption || '';
+          if (original) original.href = link.href;
+          dialog.showModal();
+          document.body.classList.add('dialog-open');
+        }));
+        dialog.querySelector('.dialog-close')?.addEventListener('click', () => dialog.close());
+        dialog.addEventListener('keydown', event => {
+          if (event.key !== 'Tab') return;
+          const controls = [...dialog.querySelectorAll<HTMLElement>('button, a[href], [tabindex="0"]')].filter(control => !control.hasAttribute('hidden') && control.getClientRects().length > 0);
+          if (!controls.length) return;
+          const index = controls.findIndex(control => control === document.activeElement);
+          event.preventDefault();
+          controls[index < 0 ? 0 : (index + (event.shiftKey ? -1 : 1) + controls.length) % controls.length].focus();
+        });
+        dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+        dialog.addEventListener('close', () => { document.body.classList.remove('dialog-open'); detail.removeAttribute('src'); original?.removeAttribute('href'); opener?.focus({ preventScroll: true }); });
+      }
+    </script>
+  </body>
+</html>

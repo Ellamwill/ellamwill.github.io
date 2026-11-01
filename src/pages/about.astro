@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Sticker from '../components/Sticker.astro';
+import { profile } from '../data/profile';
+import { Image } from 'astro:assets';
+import { asset } from '../data/assets';
+const interests = [
+  { kind: 'padel' as const, label: 'Padel' },
+  { kind: 'netball' as const, label: 'Netball' },
+  { kind: 'thrifting' as const, label: 'Thrifting' },
+  { kind: 'hiking' as const, label: 'Hiking' },
+  { kind: 'calabria' as const, label: 'Calabrian roots' },
+];
+---
+<Base title="About — Ella M Williams, UX/UI Designer" active="about" description="Ella M Williams’s approach to UX/UI design, shaped by professional retail campaign, POS and print experience at Mountain Warehouse.">
+  <section class="about-opening page-width about-hero-grid">
+    <div class="about-hero-copy"><p class="eyebrow">A little about me</p><h1>A graphic eye.<br /><span>A digital focus.</span></h1><p class="about-lead">My design experience includes retail campaigns, POS and print for Mountain Warehouse.</p><p>That work shaped how I use hierarchy, imagery and consistency to guide attention. I bring the same care to digital journeys, considering what someone needs at each step.</p><a class="text-link" href={`mailto:${profile.email}`}>Say hello ↗</a></div>
+    <div class="portrait-wrap"><Image src={asset('about/portrait.webp')} alt="Portrait of Ella M Williams." widths={[360,640,900,1120]} sizes="(max-width:700px) 85vw, 36vw" loading="eager" fetchpriority="high" /><Sticker kind="padel" class="portrait-padel" /><span class="portrait-caption">Ella, away from the artboard.</span></div>
+  </section>
+  <section class="about-personality page-width"><div><p class="eyebrow">Off the clock</p><h2>A few things<br />that make me, me.</h2><p>Padel, netball, hiking and a good second-hand find. My Calabrian heritage is another part of who I am.</p></div><ul class="interest-stickers" aria-label="Interests and heritage">{interests.map(interest => <li><Sticker kind={interest.kind} /><span>{interest.label}</span></li>)}</ul></section>
+  <section class="about-elsewhere page-width visual-elsewhere"><div><p class="eyebrow">A couple of other corners</p><h2>Out for a run.<br />On the hunt for a find.</h2></div><div class="interest-cards"><a class="interest-card strava-card" href={profile.strava}><div class="interest-media route-media"><Image src={asset('about/strava-route.webp')} alt="A selected detail from Ella’s real running route, with the start and finish omitted." widths={[320,435]} sizes="(max-width:640px) 85vw, 435px" /><Sticker kind="running" class="card-sticker" /></div><div class="interest-card-label"><span><small>Routes & activities</small><strong>Strava</strong></span><span aria-hidden="true">↗</span></div><p>A small route detail. A different perspective.</p></a><a class="interest-card depop-card" href={profile.depop}><div class="interest-media"><Image src={asset('about/depop-shop.webp')} alt="A pair of clothing photographs from Ella’s Depop shop." widths={[360,640,900,1136]} sizes="(max-width:640px) 90vw, 40vw" /><Sticker kind="thrifting" class="card-sticker" /></div><div class="interest-card-label"><span><small>Second-hand finds</small><strong>Depop</strong></span><span aria-hidden="true">↗</span></div><p>A look inside my shop.</p></a></div></section>
+  <section class="about-contact page-width"><p class="eyebrow">Get in touch</p><h2>Let’s connect.</h2><div class="contact-options"><a class="text-link" href={`mailto:${profile.email}`}>{profile.email} ↗</a><a class="text-link" href={profile.linkedin}>LinkedIn ↗</a></div></section>
+</Base>

@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import { asset } from '../data/assets';
+import { projectUrl, categoryLabel } from '../data/projects';
+import type { Project } from '../data/types';
+interface Props { project: Project; index?: number; featured?: boolean; }
+const { project, index = 0, featured = false } = Astro.props;
+const cover = asset(project.cover);
+const coverWidths = [...new Set([480, 800, 1200, 1600, cover.width].filter(width => width <= cover.width))].sort((a, b) => a - b);
+---
+<article class:list={['project-card', { featured }]}>
+  <a class="project-card-link" href={projectUrl(project)}>
+    <div class:list={['project-stage', `stage-${project.stage}`]}>
+      {project.stage === 'mw' && project.preview ? <div class="preview-phones">{project.preview.map((name, i) => <Image src={asset(name)} alt={i === 0 ? project.coverAlt : ''} widths={[280, 440, 640]} sizes="(max-width: 640px) 28vw, 18vw" loading="lazy" />)}</div> : <Image class="cover-image" src={cover} alt={project.coverAlt} widths={coverWidths} sizes={featured ? '(max-width: 900px) 100vw, 65vw' : '(max-width: 640px) 100vw, (max-width: 900px) 50vw, 34vw'} loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} />}
+      {project.stage === 'ski' && project.preview && <Image class="poster-inset" src={asset(project.preview[0])} alt="" widths={[200, 360, 480]} sizes="18vw" loading="lazy" />}
+      <span class="view-project" aria-hidden="true">View project ↗</span>
+    </div>
+    <div class="project-card-meta"><span>{categoryLabel(project.category)}</span><span>{project.kind.split(' · ')[0]}</span></div>
+    <div class="project-title-row"><h2>{project.title}</h2><span class="project-arrow" aria-hidden="true">↗</span></div>
+    <p class="project-summary">{project.summary}</p>
+    <ul class="project-tags" aria-label="Project focus">{project.tags.map(tag => <li>{tag}</li>)}</ul>
+  </a>
+</article>

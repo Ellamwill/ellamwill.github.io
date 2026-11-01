@@ -1,0 +1,36 @@
+---
+import Base from './Base.astro';
+import SectionBlock from '../components/SectionBlock.astro';
+import { Image } from 'astro:assets';
+import { asset } from '../data/assets';
+import { projects, projectUrl, categoryLabel } from '../data/projects';
+import type { Project } from '../data/types';
+interface Props { project: Project; }
+const { project } = Astro.props;
+const siblings = projects.filter(p => p.category === project.category);
+const next = siblings[(siblings.findIndex(p => p.id === project.id) + 1) % siblings.length];
+---
+<Base title={`${project.title} — Ella M Williams`} description={project.summary}>
+  <div class="case-opening page-width">
+    <div class="case-actions"><a class="back-link category-link" href={`/${project.category}/`}>All {categoryLabel(project.category)} work ↗</a><span class="origin-back-slot"><a class="back-link origin-back" data-origin-back hidden href={`/${project.category}/`}>← Back</a></span></div>
+    <div class="case-kicker"><span>{project.kind}</span><span>{project.tags.join(' / ')}</span></div>
+    <h1>{project.title}</h1>
+    <p class="case-subtitle">{project.subtitle}</p>
+    <div class="case-overview"><div><p class="eyebrow overview-label">Overview</p><p class="case-intro">{project.intro}</p></div><dl><div><dt>My contribution</dt><dd>{project.role}</dd></div><div><dt>Context & output</dt><dd>{project.status}</dd></div></dl></div>
+  </div>
+  <div class:list={['case-hero', `stage-${project.stage}`, 'page-width']}>
+    {project.stage === 'mw' && project.preview ? <div class="preview-phones device-preview">{project.preview.map((name, i) => <div class="iphone-frame"><span class="iphone-camera" aria-hidden="true"></span><Image src={asset(name)} alt={i === 0 ? project.coverAlt : ''} widths={[320, 520, 885]} sizes="28vw" loading="eager" /></div>)}</div> : <Image src={asset(project.hero || project.cover)} alt={project.heroAlt || project.coverAlt} widths={[640, 1000, 1600, 2200]} sizes="95vw" loading="eager" fetchpriority="high" />}
+  </div>
+  <nav class="case-section-nav" aria-label="In this project"><div class="page-width"><span class="section-nav-label">In this project</span>{project.sections.map(section => <a href={`#${section.id}`}>{section.label}</a>)}</div></nav>
+  <div class:list={['case-body', 'page-width', { 'ux-case-body': project.category === 'ux-ui' }]}>{project.sections.map(section => <section class:list={['case-section', { 'has-parallel-content': !!section.layout }]} id={section.id}>
+    {section.aliases?.map(alias => <span class="section-alias" id={alias} data-section-parent={section.id} aria-hidden="true"></span>)}
+    <div class="section-heading"><span class="eyebrow">{section.label}</span><h2>{section.title}</h2></div>
+    <div class:list={['section-content', { 'parallel-content': !!section.layout, 'triple-content': section.layout === 'triple' }]}>
+      {(section.blocks || [{ paragraphs: section.paragraphs, figures: section.figures, treatment: section.treatment }]).map(block => <SectionBlock block={block} sectionId={section.id} />)}
+    </div>
+  </section>)}</div>
+  <div class="next-project page-width"><p class="eyebrow">Keep exploring</p><a href={projectUrl(next)}><span><small>Next / {categoryLabel(next.category)}</small>{next.title}</span><span aria-hidden="true">↗</span></a><a class="text-link" href={`/${project.category}/`}>All {categoryLabel(project.category)} work →</a></div>
+</Base>
+<script>
+  import '../scripts/case-presentation';
+</script>

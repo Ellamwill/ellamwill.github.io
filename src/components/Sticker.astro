@@ -1,0 +1,68 @@
+---
+interface Props { kind: 'padel' | 'netball' | 'thrifting' | 'hiking' | 'calabria' | 'running'; class?: string; }
+const { kind, class: className = '' } = Astro.props;
+const palette = {
+  padel: ['#353789', '#f3efb5'],
+  netball: ['#353789', '#f5dc58'],
+  thrifting: ['#21643f', '#f3efb5'],
+  hiking: ['#353789', '#f5dc58'],
+  calabria: ['#c83b26', '#f3efb5'],
+  running: ['#c83b26', '#f3efb5'],
+}[kind];
+---
+<svg class:list={['sticker', `sticker-${kind}`, className]} style={`--sticker-ink:${palette[0]};--sticker-stock:${palette[1]}`} viewBox="0 0 150 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  {kind === 'padel' && <>
+    <path class="stock" d="M30 15c12-12 38-13 51-4 16-1 31 9 35 23 7 17 3 34-8 48l-7 11 9 14c8 16 0 26-14 26H48c-14 1-21-9-14-21l13-25C16 77 9 58 15 39c2-10 7-18 15-24Z" />
+    <g transform="rotate(21 72 65)">
+      <path class="ink" d="M73 15c-19 0-31 15-31 36 0 18 10 32 22 36v31h18V87c12-4 22-18 22-36 0-21-12-36-31-36Z" />
+      <g class="stock">{[35,48,61].map(y => [61,74,87].map(x => <circle cx={x} cy={y} r="3.5" />))}<path d="M65 78h16v5H65zm2 21h12v5H67zm0 11h12v5H67z" /></g>
+    </g>
+    <circle class="ink" cx="113" cy="100" r="16" /><path class="stock-line" d="M102 89c12 0 18 7 21 17" />
+    <path class="ink-line" d="m22 46-9-4m8 17-11 1m107-38 7-7" />
+  </>}
+  {kind === 'netball' && <>
+    <path class="stock" d="M20 21C36 5 60 4 77 8c27-5 52 13 58 39 8 24-1 43-13 57 7 18-5 31-22 30H41c-17 1-28-12-21-27C1 88 2 58 12 41l8-20Z" />
+    <circle class="ink" cx="75" cy="58" r="44" />
+    <g class="stock-line seam"><path d="M74 15c-21 13-28 33-25 52 2 13 8 24 16 33M33 44c25 5 58 16 83 37M98 21C77 35 64 68 60 98M35 79c26-13 49-18 82-17" /></g>
+    <text class="ink sticker-word" x="75" y="123" text-anchor="middle" font-size="18" transform="rotate(-4 75 123)">ON COURT</text>
+  </>}
+  {kind === 'thrifting' && <>
+    <path class="stock" d="M26 12c13-6 30-4 43-3 21-6 44-1 49 16 17 5 24 18 18 34l-7 15c12 15 6 32-9 37-2 19-24 24-43 19-18 8-43 3-47-14C12 112 5 98 14 83 1 68 9 51 21 45c-8-13-7-25 5-33Z" />
+    <text class="ink sticker-word" x="75" y="34" text-anchor="middle" font-size="20" transform="rotate(-4 75 34)">GOOD</text>
+    <path class="ink-line hanger" d="M65 55c-1-13 20-14 21-2 1 9-12 11-12 17L29 94c-5 3-4 9 3 9h86c7 0 8-6 3-9L82 73" />
+    <text class="ink sticker-word" x="75" y="124" text-anchor="middle" font-size="20" transform="rotate(3 75 124)">FINDS</text>
+    <path class="ink" d="m118 41 3 8 9 3-9 3-3 9-3-9-8-3 8-3 3-8Z" />
+  </>}
+  {kind === 'hiking' && <>
+    <path class="stock" d="M22 13c10-10 29-9 44-7l53 5c16 1 24 14 19 26-2 7-6 11-13 14l-2 26 13 15c13 12 10 34-7 39l-98 2c-20 0-29-15-21-32l10-21-2-30C7 39 8 22 22 13Z" />
+    <text class="ink sticker-word" x="75" y="33" text-anchor="middle" font-size="17" transform="rotate(-3 75 33)">TAKE A HIKE</text>
+    <path class="ink" d="m34 48 38-2 9 35 31 10c12 4 16 12 15 23l-101 1V91c0-10 4-15 10-20l-2-23Z" />
+    <path class="stock-line" d="m48 57 22-1m-21 12 23-1m-21 12 24-1m-22 12 26-2m-43 16h78" />
+    <path class="ink-line" d="m34 120-2 5m20-5-1 5m20-5v5m20-5 1 5m20-5 2 5" />
+  </>}
+  {kind === 'calabria' && <>
+    <path class="stock" d="M75 8c14-8 34-2 36 14 22-1 32 18 24 37-4 14-10 25-21 37 14 1 25 10 21 23-3 13-17 17-31 14H38c-15 3-28-7-25-21 1-8 7-13 14-16-9-3-14-9-13-17 0-8 7-12 15-14C49 59 58 49 61 34c-2-12 4-21 14-26Z" />
+    <path class="ink" d="M88 28c29-1 36 18 25 38-15 29-44 38-80 28 28-2 36-13 40-28 2-10 3-25 15-38Z" />
+    <path class="ink-line stem" d="M91 33c-3-13 0-20 10-21" />
+    <path class="stock-line" d="M99 44c-1 16-10 29-23 35" />
+    <text class="ink sticker-word" x="75" y="121" text-anchor="middle" font-size="18" transform="rotate(-3 75 121)">CALABRIA</text>
+  </>}
+  {kind === 'running' && <>
+    <path class="stock" d="M14 24c6-9 21-14 33-9l30 16c13-5 26 1 29 14l8 17 20 9c12 4 17 16 11 27l-4 17c-3 15-18 20-34 16l-78-8C10 122 3 109 8 92l5-24c-7-11-6-32 1-44Z" />
+    <text class="ink sticker-word" x="74" y="34" text-anchor="middle" font-size="16" transform="rotate(6 74 34)">OUT FOR A RUN</text>
+    <path class="ink" d="m23 52 32 12 16-16 15 8 16 28 25 7c9 3 11 8 8 17l-114-8c-3-12-2-31 2-48Z" />
+    <path class="stock" d="m33 62 19 10-10 13-13-5 4-18Zm40-5 9 5 9 17-20-5 2-17Z" />
+    <path class="stock-line" d="m58 72 13 5m-9-15 13 6m-10 14 13 6m-56 9 111 9" />
+    <path class="ink-line" d="m23 114 7 1m10 1 7 1m10 1 7 1m10 1 7 1m10 1 7 1m10 1 7 1M14 43l-6-4m6 16-8-1" />
+  </>}
+</svg>
+<style>
+  .stock { fill:var(--sticker-stock); }
+  .ink { fill:var(--sticker-ink); }
+  .ink-line { stroke:var(--sticker-ink); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+  .stock-line { stroke:var(--sticker-stock); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+  .seam { stroke-width:3.5; }
+  .hanger { stroke-width:7; }
+  .stem { stroke-width:8; }
+  .sticker-word { font-family:var(--head),sans-serif; font-weight:800; letter-spacing:-.9px; stroke:var(--sticker-ink); stroke-width:.6px; paint-order:stroke fill; }
+</style>

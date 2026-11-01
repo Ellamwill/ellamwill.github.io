@@ -1,0 +1,14 @@
+---
+import Figure from './Figure.astro';
+import type { SectionBlock } from '../data/types';
+interface Props { block: SectionBlock; sectionId: string; }
+const { block, sectionId } = Astro.props;
+---
+<div class="content-block" id={block.id} data-section-parent={block.id ? sectionId : undefined}>
+  <div class="block-copy">
+    {block.title && <h3 class="block-title">{block.title}</h3>}
+    {!!block.paragraphs?.length && <div class="section-prose">{block.paragraphs.map(text => <p>{text}</p>)}</div>}
+  </div>
+  {block.steps && <figure class="research-diagram"><ol>{block.steps.map(step => <li><span class="eyebrow">{step.label}</span><p>{step.text}</p></li>)}</ol>{block.caption && <figcaption>{block.caption}</figcaption>}</figure>}
+  {block.figures && <div class:list={['figure-group', `figures-${block.treatment || 'wide'}`]}>{block.figures.map(figure => <Figure figure={figure} />)}</div>}
+</div>
