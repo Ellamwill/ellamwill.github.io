@@ -55,8 +55,10 @@ Read `AGENTS.md` before edits. Local sessions need the **parent workspace**, who
 
 ## GitHub Pages
 
-The deployment workflow is prepared for Ellamwill's main Pages repository, `ellamwill.github.io`, at `https://ellamwill.github.io`. The repository root must contain this website's files from `site/`; keep the parent source/planning folders outside it. Existing internal links use `/`, so a project repository served at `/repo-name/` requires a separate base-path/link migration before deployment.
+Published 1 November 2026: **[ellamwill.github.io](https://ellamwill.github.io/)**. Source repository: [Ellamwill/ellamwill.github.io](https://github.com/Ellamwill/ellamwill.github.io). The [initial deployment](https://github.com/Ellamwill/ellamwill.github.io/actions/runs/41358998265) succeeded and the live homepage was opened and verified.
+
+The repository root contains this website's files from `site/`; keep the parent source/planning folders outside it. Existing internal links use `/`, so a project repository served at `/repo-name/` requires a separate base-path/link migration before deployment.
 
 After GitHub login, create or select that repository, push the website on `main`, and set **Settings → Pages → Source → GitHub Actions**. `.github/workflows/deploy.yml` installs locked dependencies with Node 24 and pnpm 11.25.0, builds `dist/`, then deploys it through the official Pages artifact workflow. Later pushes to `main` update the site. No personal access token is required by the workflow; deployment uses GitHub's temporary token and OIDC permissions.
 
-`astro.config.mjs` defaults to the confirmed public origin and accepts an optional `SITE_URL` override. The workflow supplies the configured Pages origin automatically. Local development needs no override. A `.nojekyll` file is unnecessary for this artifact-based Actions deployment. Account authentication, the chosen repository and a successful workflow deployment must still be completed before calling the site live.
+`astro.config.mjs` defaults to the confirmed public origin and accepts an optional `SITE_URL` override. The workflow supplies the configured Pages origin automatically. Local development needs no override. A `.nojekyll` file is unnecessary for this artifact-based Actions deployment.
