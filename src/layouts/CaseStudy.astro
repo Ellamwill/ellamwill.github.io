@@ -16,7 +16,7 @@ const next = siblings[(siblings.findIndex(p => p.id === project.id) + 1) % sibli
     <div class="case-kicker"><span>{project.kind}</span><span>{project.tags.join(' / ')}</span></div>
     <h1>{project.title}</h1>
     <p class="case-subtitle">{project.subtitle}</p>
-    <div class="case-overview"><div><p class="eyebrow overview-label">Overview</p><p class="case-intro">{project.intro}</p></div><dl><div><dt>My contribution</dt><dd>{project.role}</dd></div><div><dt>Context & output</dt><dd>{project.status}</dd></div></dl></div>
+    <div class="case-overview"><div><p class="eyebrow overview-label">Overview</p><p class="case-intro">{project.intro}</p>{project.credit && <p class="case-credit">{project.credit}</p>}</div><dl><div><dt>My contribution</dt><dd>{project.role}</dd></div><div><dt>{project.contextLabel || 'Context & output'}</dt><dd>{project.status}</dd></div></dl></div>
   </div>
   <div class:list={['case-hero', `stage-${project.stage}`, 'page-width']}>
     {project.stage === 'mw' && project.preview ? <div class="preview-phones device-preview">{project.preview.map((name, i) => <div class="iphone-frame"><span class="iphone-camera" aria-hidden="true"></span><Image src={asset(name)} alt={i === 0 ? project.coverAlt : ''} widths={[320, 520, 885]} sizes="28vw" loading="eager" /></div>)}</div> : <Image src={asset(project.hero || project.cover)} alt={project.heroAlt || project.coverAlt} widths={[640, 1000, 1600, 2200]} sizes="95vw" loading="eager" fetchpriority="high" />}

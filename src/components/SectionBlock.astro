@@ -10,5 +10,6 @@ const { block, sectionId } = Astro.props;
     {!!block.paragraphs?.length && <div class="section-prose">{block.paragraphs.map(text => <p>{text}</p>)}</div>}
   </div>
   {block.steps && <figure class="research-diagram"><ol>{block.steps.map(step => <li><span class="eyebrow">{step.label}</span><p>{step.text}</p></li>)}</ol>{block.caption && <figcaption>{block.caption}</figcaption>}</figure>}
+  {block.findings && <div class="study-findings">{block.findings.map(finding => <article class="study-finding"><h3>{finding.title}</h3><dl><div><dt>Study finding</dt><dd>{finding.observation}</dd></div><div><dt>{finding.responseLabel}</dt><dd>{finding.response}</dd></div></dl></article>)}</div>}
   {block.figures && <div class:list={['figure-group', `figures-${block.treatment || 'wide'}`]}>{block.figures.map(figure => <Figure figure={figure} />)}</div>}
 </div>

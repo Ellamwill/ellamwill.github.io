@@ -7,8 +7,14 @@ interface Props { category: Category; }
 const { category } = Astro.props;
 const list = projects.filter(p => p.category === category);
 const ux = category === 'ux-ui';
+const graphicCovers: Record<string, { image: string; alt: string } | undefined> = {
+  GD03: {
+    image: 'graphics/nov4-lookbook-final-7.webp',
+    alt: 'Final AW24 lookbook spreads showing women’s padded jackets and men’s skiwear with technical feature callouts.',
+  },
+};
 ---
 <Base title={`${categoryLabel(category)} work — Ella M Williams`} description={ux ? 'UX/UI design by Ella M Williams: onboarding, shopping and community-sharing journeys, from wireframes to interface decisions.' : 'Retail campaigns, editorial layouts and illustrated print development by Ella M Williams for Mountain Warehouse.'}>
   <section class="category-opening page-width"><a class="back-link" href="/">← All work</a><p class="eyebrow">{ux ? 'Digital interfaces & considered interactions' : 'Campaigns, print & editorial'}</p><h1>{ux ? 'UX/UI' : 'Graphic'}<span> design.</span></h1><div class="category-description"><p>{ux ? 'User journeys and interfaces for saving, shopping and community sharing.' : 'Retail offers, editorial spreads and illustrated prints, designed to work in context.'}</p><p>{ux ? 'From wireframes to detailed screens, these projects show how I organise information, give people choices and refine the next step.' : 'I use hierarchy, imagery and a consistent visual language to connect each idea across formats.'}</p></div></section>
-  <section class="category-work page-width" aria-label={`${categoryLabel(category)} projects`}><nav class="discipline-nav" aria-label="Work disciplines"><a href="/">All work</a><a class:list={{current:ux}} aria-current={ux ? 'page' : undefined} href="/ux-ui/">UX/UI <span>{projectCount('ux-ui')}</span></a><a class:list={{current:!ux}} aria-current={!ux ? 'page' : undefined} href="/graphic-design/">Graphic Design <span>{projectCount('graphic-design')}</span></a></nav><div class="project-grid category-grid">{list.map((project, index) => <ProjectCard project={project} index={index} />)}</div></section>
+  <section class="category-work page-width" aria-label={`${categoryLabel(category)} projects`}><nav class="discipline-nav" aria-label="Work disciplines"><a href="/">All work</a><a class:list={{current:ux}} aria-current={ux ? 'page' : undefined} href="/ux-ui/">UX/UI <span>{projectCount('ux-ui')}</span></a><a class:list={{current:!ux}} aria-current={!ux ? 'page' : undefined} href="/graphic-design/">Graphic Design <span>{projectCount('graphic-design')}</span></a></nav><div class="project-grid category-grid">{list.map((project, index) => <ProjectCard project={project} index={index} coverOverride={graphicCovers[project.id]} />)}</div></section>
 </Base>

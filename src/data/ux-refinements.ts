@@ -223,17 +223,16 @@ export const uxProjects: Project[] = [
       {
         id: 'entry',
         label: 'Entry',
-        title: 'How can shoppers browse or sign in?',
+        title: 'How can shoppers get started?',
         paragraphs: [],
         blocks: [
           {
             paragraphs: [
-              'I wanted a quick, simple way into the collection. The earlier welcome screen offers sign-in, account creation and “Start exploring”, while the account route uses a focused email-and-password form.',
+              'I wanted a quick, simple way into the collection. The revised welcome screen separates sign-in and account creation, while the account route uses a focused email-and-password form.',
             ],
-            treatment: 'phones',
+            treatment: 'wide',
             figures: [
-              { image: 'ux/mw-welcome.webp', alt: 'Earlier Mountain Warehouse welcome design with sign-in, account creation and a visible Start exploring browse invitation.', caption: 'Earlier welcome: account choices and a Start exploring route into browsing.' },
-              { image: 'ux/mw-sign-in.webp', alt: 'Earlier Mountain Warehouse sign-in design with email and password fields, account benefits and password recovery.', caption: 'Earlier sign-in: a focused form with account benefits and password recovery.' },
+              { image: 'ux/mw-entry-current.webp', alt: 'Revised Mountain Warehouse welcome and sign-in screens: account choices on the green welcome screen, then an email-and-password form with a Continue button.', caption: 'Revised welcome and sign-in: account choices followed by a focused form.' },
             ],
           },
         ],
@@ -258,34 +257,40 @@ export const uxProjects: Project[] = [
       {
         id: 'revision',
         aliases: ['outcome'],
-        label: 'Study & revisions',
-        title: 'What changed after the shopping tasks?',
+        label: 'Usability study',
+        title: 'What did I learn from the shopping tasks?',
         paragraphs: [],
         blocks: [
           {
             title: 'A task-based Google Doc.',
             paragraphs: [
-              'After the first high-fidelity mock-up, I ran an unmoderated usability study using a structured Google Doc. I asked people to reach the home page, find and add a ski bundle, then return home.',
+              'After the first high-fidelity mock-up, I ran an unmoderated usability study using a structured Google Doc. The tasks were to reach Home, find and add a ski bundle, then return Home.',
             ],
-          },
-          {
-            title: 'Give the browse invitation more emphasis.',
-            paragraphs: [
-              'The “Start exploring” invitation was missed. I made the link yellow and underlined to give it more emphasis within the welcome message.',
-            ],
-            treatment: 'wide',
-            figures: [
-              { image: 'ux/mw-entry-comparison.webp', alt: 'Earlier welcome design on the left and revised design on the right, where Start exploring is yellow and underlined.', caption: 'Earlier → revised: colour and underline emphasise the browse invitation.' },
-            ],
-          },
-          {
-            title: 'Represent the wider ski audience.',
-            paragraphs: [
-              'The children’s promotion made it unclear whether the bundles were for everyone. I replaced it with broader skiing imagery, connecting the home promotion with the wider collection.',
-            ],
-            treatment: 'wide',
-            figures: [
-              { image: 'ux/mw-home-comparison.webp', alt: 'Earlier home design on the left with a children-only ski promotion, and revised design on the right with broader skiing imagery.', caption: 'Earlier → revised: broader skiing imagery replaces the children-only promotion.' },
+            findings: [
+              {
+                title: 'Make browsing easier to notice.',
+                observation: 'The “Start exploring” invitation was missed.',
+                responseLabel: 'Recorded revision',
+                response: 'In the study iteration, I made the link yellow and underlined to increase its emphasis.',
+              },
+              {
+                title: 'Represent the wider ski audience.',
+                observation: 'The children’s promotion made the bundles seem limited to children.',
+                responseLabel: 'Recorded revision',
+                response: 'I replaced it with broader skiing imagery to communicate the wider collection.',
+              },
+              {
+                title: 'Keep a clear route back.',
+                observation: 'One checkout page lacked a clear route back to Home.',
+                responseLabel: 'Next check',
+                response: 'Trace return routes throughout checkout, then test whether shoppers can find their way back.',
+              },
+              {
+                title: 'Make actions consistent.',
+                observation: 'The Home buttons needed a more consistent treatment.',
+                responseLabel: 'Recorded refinement',
+                response: 'I changed “New arrivals” to a full-width bar; I would review the remaining actions together.',
+              },
             ],
           },
         ],
@@ -295,7 +300,7 @@ export const uxProjects: Project[] = [
         label: 'Conclusion',
         title: 'What did the prototype resolve?',
         paragraphs: [
-          'The prototype brings ski-clothing selection into one route, with a size choice for each item. Task feedback showed that the route into browsing and the audience of the offer needed clearer communication; the revisions address those two points. Next, I would test the revised entry and return navigation with first-time skiers.',
+          'The prototype brings ski-clothing selection into one route, with a size choice for each item. The study clarified the need for a more noticeable entry, broader audience cues and consistent navigation. Next, I would retest the revisions and return routes with first-time skiers.',
         ],
       },
     ],

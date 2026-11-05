@@ -1,6 +1,6 @@
 # Ella M Williams — portfolio
 
-A static Astro portfolio with a UX/UI-led opening and direct UX/UI and graphic design routes. Seven projects, About, a custom 404, an explicit former-project notice and GitHub Pages deployment configuration.
+A static Astro portfolio with a UX/UI-led opening and direct UX/UI and graphic design routes. Six projects, About, a custom 404, an explicit former-project notice and GitHub Pages deployment configuration.
 
 ## Run
 
@@ -47,13 +47,15 @@ Astro 7 preview may keep its server running after the command returns. Use `pnpm
 
 The site uses semantic HTML, responsive Astro images and two preloaded self-hosted variable fonts. Project pages provide HTML stage links and fit-to-screen enlargement using a native dialog, with viewing the original as a secondary action. Back appears for a known in-site origin; category links remain available for direct entry and without JavaScript. Work/About remembers the current work page and position within the tab/session; the logo and All work links lead Home. The header remains available while scrolling. Theme choice follows the system until manually selected and is saved when storage is available. No analytics, forms or remote font requests are included.
 
-The latest 31 October revision retains matched explanations, images and distinct conclusions, with compact complete previews, section-bound desktop headings and responsive parallel groups. Heading boxes were removed; PocketWise's three control examples use columns on wide screens. The native flow SVG, EMW mark, requested copy and two-colour About stickers are applied. Existing section hashes remain, including aliases for moved content. Private source maps and focused verification are recorded in the parent planning folder.
+The 31 October revision retained matched explanations, images and distinct conclusions, with compact complete previews, section-bound desktop headings and responsive parallel groups. Heading boxes were removed; PocketWise's three control examples use columns on wide screens. The native flow SVG, EMW mark, requested copy and two-colour About stickers are applied. Existing section hashes remain, including aliases for moved content. Private source maps and focused verification are recorded in the parent planning folder.
 
 Font licenses are in `licenses/`. Project imagery retains its own identity; its presence in this local build does not change underlying ownership or establish publication clearance.
 
 Read `AGENTS.md` before edits. Local sessions need the **parent workspace**, whose private planning contains source evidence, design decisions, derivative mappings and QA results. Those folders are deliberately absent from this repository and build.
 
 ## GitHub Pages
+
+The six-project selection starts with PocketWise, HerbShare and Mountain Warehouse, followed by the western capsule, AW24 lookbook and Festivals. The capsule and Festivals use optimized arrangement images; their graphic stories include the latest supplied artwork and credits. Mountain Warehouse uses the revised welcome/sign-in composition and HTML usability findings, with recorded changes distinguished from future checks. Home retains the original introduction with “an aspiring UX/UI designer” and a stable desktop sidebar. The ski-package project is removed; a restorable archive stays outside this website repository in the parent workspace.
 
 Published 1 November 2026: **[www.ellamwilliams.co.uk](https://www.ellamwilliams.co.uk/)**. Source repository: [Ellamwill/ellamwill.github.io](https://github.com/Ellamwill/ellamwill.github.io). The original [ellamwill.github.io](https://ellamwill.github.io/) address redirects to the custom domain. GitHub Pages has an approved certificate for both `www.ellamwilliams.co.uk` and `ellamwilliams.co.uk`, with HTTPS enforced.
 

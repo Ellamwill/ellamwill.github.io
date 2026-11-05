@@ -2,136 +2,87 @@ import type { Project } from './types';
 
 export const graphicProjects: Project[] = [
   {
-    id: 'GD01', slug: 'ski-package-campaign', title: 'The ski package',
-    subtitle: 'One offer. A clear place on the shop floor.',
-    category: 'graphic-design', kind: 'Professional work · Mountain Warehouse',
-    role: 'Promotional layout & offer hierarchy',
-    status: 'UK retail applications & US artwork',
-    summary: 'A ski-package promotion with a clear offer hierarchy across portrait and landscape retail formats.',
-    intro: 'Mountain Warehouse’s ski promotion brings a jacket, trousers and accessories into one package. I redesigned the layout to make the bundle and its price easier to pick out.',
-    tags: ['Campaign', 'POS', 'Layout'],
-    cover: 'graphics/ski-store.webp', coverAlt: 'Ski-package sign installed above a display of ski clothing.',
-    stage: 'ski', preview: ['graphics/ski-poster-us.webp'],
-    sections: [
-      {
-        id: 'brief', label: 'Brief & offer', title: 'Make the package easier to understand.',
-        paragraphs: ['The layout had to communicate the included products and the saving in the same space. My focus was the relationship between the headline, product group and price.'],
-      },
-      {
-        id: 'development', label: 'Layout development', title: 'Explore the balance of product and price.',
-        paragraphs: ['I explored how much space to give the lifestyle image alongside the separate products. The blue savings band anchors these early UK layouts, while the product and price positions change.'],
-        treatment: 'pair', figures: [
-          { image: 'graphics/ski-development-a.webp', alt: 'Early ski-package layout with a blue savings band below a grouping of products.', caption: 'Early UK layout: the product group sits above the savings band.' },
-          { image: 'graphics/ski-development-c.webp', alt: 'Ski-package layout with a model photograph on the left and product cut-outs, price and blue saving band on the right and below.', caption: 'Alternative UK layout: a separate image area keeps the package details together on the right.' },
-        ],
-      },
-      {
-        id: 'artwork', label: 'Market artwork', title: 'Separate the saving from the package price.',
-        paragraphs: ['I gave the saving its own circular badge and used red for the package price. These create two points of emphasis, while the product cut-outs show what the bundle contains.'],
-        treatment: 'artwork', figures: [
-          { image: 'graphics/ski-poster-us.webp', alt: 'US-dollar ski poster combining a snowy photograph, jacket, trousers, accessories and package price.', caption: 'US-dollar artwork: the saving sits above the package price and included products.' },
-        ],
-      },
-      {
-        id: 'application', label: 'In-store formats', title: 'Connect the offer to the product display.',
-        paragraphs: ['I adapted the composition to horizontal signs above the ranges and portrait pieces alongside the clothing. Keeping the offer near its products connects the campaign message with the display.'],
-        treatment: 'pair', figures: [
-          { image: 'graphics/ski-store.webp', alt: 'UK women’s ski-package promotion installed above racks of jackets and accessories.', caption: 'UK women’s range: horizontal offer above the product display.' },
-          { image: 'graphics/ski-kids-installation.webp', alt: 'Children’s ski-package sign above jackets, with matching smaller portrait signs on the display.', caption: 'UK children’s range: horizontal and smaller portrait formats together.' },
-          { image: 'graphics/ski-portrait-installation.webp', alt: 'Portrait ski-package offer in a frame on a UK clothing display.', caption: 'UK retail application: a portrait sign beside the clothing.' },
-          { image: 'graphics/ski-mens-installation.webp', alt: 'Men’s ski-package offer above a display of ski jackets.', caption: 'UK men’s range: a horizontal offer adapted to another product grouping.' },
-        ],
-      },
-    ],
-  },
-  {
     id: 'GD05', slug: 'western-print-capsule', title: 'Girls’ western print capsule',
-    subtitle: 'A horse-led print system, from direction to supplier sample.',
+    subtitle: 'A girls’ summer print capsule for Mountain Warehouse, from colour palette development towards the shop floor.',
     category: 'graphic-design', kind: 'Professional work · Mountain Warehouse',
     role: 'Print direction, illustration & capsule development',
-    status: 'Print artwork & supplier strike/sample',
-    summary: 'A western-themed girls’ capsule connecting a horse repeat, supporting motifs and colourway studies.',
-    intro: 'I developed a western-themed print capsule for Mountain Warehouse, using an illustrated horse repeat to connect placement graphics and supporting patterns.',
+    status: 'Colour palette development, print artwork design & amendments.',
+    credit: 'Colour palette developed with: Anneka Else, Rupal Patel and Stephanie Woolley.',
+    summary: 'A Summer 2027 print capsule, from western inspiration and a shared colour palette to coordinated artwork for production.',
+    intro: 'I developed prints for a Summer 2027 capsule, focusing on western themes.',
     tags: ['Textile print', 'Illustration', 'Capsule design'],
-    cover: 'graphics/western-horse-repeat.webp',
-    coverAlt: 'Illustrated horses, hats, boots, cacti and stars repeating on a berry background.',
-    hero: 'graphics/western-supplier-sample.webp',
-    heroAlt: 'Supplier sample jacket with western motifs on a pale green background.',
+    cover: 'graphics/cowgirl-capsule-arrangement.webp',
+    coverAlt: 'Western capsule artwork arranged with illustrated horses, supporting patterns, a Chasing Sunsets placement and colour swatches.',
+    hero: 'graphics/cowgirl-capsule-arrangement.webp',
+    heroAlt: 'Western capsule artwork arranged with illustrated horses, supporting patterns, a Chasing Sunsets placement and colour swatches.',
     stage: 'western',
     sections: [
       {
-        id: 'direction', label: 'Brief & direction', title: 'Make the prints feel like one collection.',
-        paragraphs: ['Every print needed to feel part of one girls’ collection when displayed together. A cowgirl trend I noticed while looking at competitor shops gave me the direction; I then gathered palette and motif references before drawing.'],
-      },
-      {
-        id: 'exploration', label: 'Explored routes', title: 'Try different ways into the theme.',
-        paragraphs: ['The hat graphic, bows and check were early routes that did not join the final range. Looking back, I would check each idea against the wider collection earlier.'],
-        treatment: 'pair', figures: [
-          { image: 'graphics/western-explored-hat.webp', alt: 'Chasing Sunsets lettering above an illustrated cowgirl hat.', caption: 'Chasing Sunsets — an early placement route.' },
-          { image: 'graphics/western-explored-bows.webp', alt: 'Pink and pale bow shapes in a repeating pattern.', caption: 'Bows — an early repeat route.' },
-          { image: 'graphics/western-explored-check.webp', alt: 'Loose pink and orange checked pattern.', caption: 'Check — an early repeat route.' },
+        id: 'trend-forecasting', aliases: ['direction', 'exploration'], label: 'Trend forecasting', title: 'Starting each season with trend forecasting',
+        paragraphs: ['Through competitor shopping and secondary research into print trends, I collated inspiration for the print direction. I noticed western imagery across Next, John Lewis and M&S, and decided to build a capsule around this theme.'],
+        treatment: 'wide', figures: [
+          { image: 'graphics/nov4-western-inspiration.webp', alt: 'Research moodboard combining western, desert and animal motifs with example garments from other brands.', caption: 'Third-party reference designs gathered for the inspiration moodboard.' },
         ],
       },
       {
-        id: 'print-system', label: 'Selected print system', title: 'Let the horse repeat lead the family.',
-        paragraphs: ['I made the horse repeat the lead design, then reused its western motifs across the supporting prints. Mixing detailed illustration with simpler repeats gave the collection variety while keeping the pieces related.'],
-        treatment: 'pair', figures: [
-          { image: 'graphics/western-horse-repeat.webp', alt: 'Illustrated horses, hats, boots, cacti and stars repeating on a berry background.', caption: 'The lead repeat brings the full motif set together.' },
-          { image: 'graphics/western-horse-placement.webp', alt: 'Decorative horse head filled with floral, cactus and western-inspired shapes.', caption: 'A horse-head placement uses the theme in a single illustration.' },
-          { image: 'graphics/western-motif-system.webp', alt: 'Wild and Free placement artwork, a scattered western-motif repeat and two star prints.', caption: 'Supporting designs: Wild & Free, scattered icons and star repeats.' },
+        id: 'palette', aliases: ['colourways'], label: 'Colour palette', title: 'Colour palette development',
+        paragraphs: ['Alongside print development, the Print and CAD teams work together to develop a colour palette for each season. We chose soft pops of colour, with pink tones running through the prints.'],
+        treatment: 'wide', figures: [
+          { image: 'graphics/nov4-western-palette.webp', alt: 'Lifestyle reference photographs above a seasonal palette of coral, berry, pink, sand, mauve, teal and yellow swatches.', caption: 'Seasonal palette development with the Print and CAD teams.' },
         ],
       },
       {
-        id: 'colourways', label: 'Colourway exploration', title: 'Keep the motif system, vary the ground.',
-        paragraphs: ['I explored navy, blue, sage and berry backgrounds, keeping the western motifs as the link between them. These colourway studies vary the overall feel while retaining the collection’s illustrated character.'],
-        treatment: 'pair', figures: [
-          { image: 'graphics/western-colourway-navy.webp', alt: 'Horse repeat explored on a navy background.', caption: 'Navy study.' },
-          { image: 'graphics/western-colourway-blue.webp', alt: 'Horse repeat explored on a blue background.', caption: 'Blue study.' },
-          { image: 'graphics/western-colourway-sage.webp', alt: 'Horse repeat explored on a sage background.', caption: 'Sage study.' },
-          { image: 'graphics/western-colourway-berry.webp', alt: 'Horse repeat explored on a berry background.', caption: 'Berry study.' },
+        id: 'print-use', aliases: ['sample'], label: 'Print use', title: 'Print use',
+        paragraphs: ['Each print was selected to suit different product categories. This print was chosen for outerwear and fleece, with colourways suited to different applications across clothing and accessories. At this stage, colour amendments are made and the prints are uploaded for suppliers.'],
+        treatment: 'wide', figures: [
+          { image: 'graphics/nov4-western-applications.webp', alt: 'Garment mockup showing a girl in a navy western-print jacket beside the print in navy, sage and berry colourways.', caption: 'Outerwear application mockup and colourways for the forthcoming range.' },
         ],
       },
       {
-        id: 'sample', label: 'Supplier sample', title: 'Take the motifs onto a garment.',
-        paragraphs: ['The supplier sample takes the western motifs onto a jacket, showing the pattern across the body, sleeves and seams beyond the flat artwork.'],
-        treatment: 'artwork', figures: [
-          { image: 'graphics/western-supplier-sample.webp', alt: 'Supplier sample jacket with western motifs on a pale green background.', caption: 'Supplier strike/sample' },
+        id: 'production', aliases: ['print-system'], label: 'Final prints', title: 'Final prints to production',
+        paragraphs: ['Elements are carried across multiple designs to unite the prints and create opportunities for customers to mix and match across the range.'],
+        treatment: 'wide', figures: [
+          { image: 'graphics/nov4-western-final.webp', alt: 'Final western print artwork combining a berry horse repeat, pink and orange check, Wild and Free placement, horse-head illustration, stars and scattered motifs.', caption: 'Final artwork for the Summer 2027 capsule: approved or in production, not yet in stores.' },
+        ],
+      },
+      {
+        id: 'other-prints', label: 'Other print work', title: 'Other prints I’ve worked on',
+        paragraphs: ['A broader selection of print artwork and product applications beyond the western capsule.'],
+        treatment: 'wide', figures: [
+          { image: 'graphics/nov4-other-prints.webp', alt: 'A collage of varied print artwork, placement graphics and photographed garments from other print work.', caption: 'Broader print and product work.' },
         ],
       },
     ],
   },
   {
     id: 'GD03', slug: 'aw24-lookbook', title: 'AW24 lookbook',
-    subtitle: 'An editorial system for an outdoor clothing range.',
+    subtitle: 'A lookbook redesign: collating, editing and exploring layout.',
     category: 'graphic-design', kind: 'Professional work · Mountain Warehouse',
-    role: 'In-house lookbook layout & execution', status: 'Flat spreads and photographed printed book',
-    summary: 'An in-house lookbook redesign using layered photography and feature callouts to highlight the clothing.',
-    intro: 'I redesigned Mountain Warehouse’s Autumn/Winter 2024 in-house lookbook, using overlapping photography and feature callouts to give the clothing a stronger editorial focus.',
+    role: 'In-house lookbook layout & execution',
+    contextLabel: 'Timeline & collaboration',
+    status: 'Two months, alongside other projects. In collaboration with the Marketing team.',
+    summary: 'An in-house AW24 lookbook redesign highlighting ski-jacket technical features through bold layouts and imagery.',
+    intro: 'I redesigned Mountain Warehouse’s Autumn/Winter 2024 in-house lookbook, focusing on highlighting the key technical features of its ski jackets.',
     tags: ['Editorial', 'Layout', 'Print'],
     cover: 'graphics/lookbook-printed.webp',
     coverAlt: 'Open printed lookbook showing women’s skiwear with overlapping photographs and circular feature callouts.',
     stage: 'lookbook', preview: ['graphics/lookbook-printed.webp', 'graphics/lookbook-ski.webp'],
     sections: [
       {
-        id: 'hierarchy', label: 'Editorial hierarchy', title: 'Give each spread a focal point.',
-        paragraphs: ['The earlier book gave many images similar weight. I introduced larger focal photographs and layered supporting shots around them, so each spread could lead with a strong image while still showing the range.'],
-        treatment: 'artwork', figures: [
-          { image: 'graphics/lookbook-fleece.webp', alt: 'Men’s fleece lookbook spread combining product and lifestyle photographs with category text.', caption: 'Fleece: layered lifestyle shots sit alongside an isolated product image.' },
-          { image: 'graphics/lookbook-jackets.webp', alt: 'Women’s padded-jacket spread with overlapping model photographs and product labels.', caption: 'Jackets: a feature label links the lining detail to the worn product.' },
+        id: 'first-iteration', aliases: ['hierarchy'], label: 'First iteration', title: 'First lookbook iteration',
+        paragraphs: ['This project involved refreshing an older lookbook design to highlight key features of Mountain Warehouse’s Autumn/Winter clothing. I wanted to push the brief through bold layouts and imagery, taking inspiration from competitors such as The North Face and Arc’teryx.'],
+        treatment: 'wide', figures: [
+          { image: 'graphics/nov4-lookbook-first.webp', alt: 'Four photographs showing the first lookbook iteration’s cover and open skiwear spreads.', caption: 'First lookbook iteration — cover and open ski spreads.' },
         ],
       },
       {
-        id: 'system', label: 'Spread system', title: 'Keep the structure, adapt the emphasis.',
-        paragraphs: ['Category headings and product labels tie the spreads together. For skiwear, I placed circular feature callouts alongside the model photography to bring technical details into the visual story.'],
+        id: 'final-spreads', aliases: ['system', 'printed'], label: 'Final spreads', title: 'Final spreads',
+        paragraphs: ['After several rounds of design feedback and amendments, the final lookbook was completed, printed and distributed in the office. I incorporated feedback from colleagues and was subsequently asked to design the SS25 lookbook, suggesting a positive response to the work.'],
         treatment: 'wide', figures: [
-          { image: 'graphics/lookbook-ski.webp', alt: 'Men’s skiwear spread using overlapping photographs and circular technical feature callouts.', caption: 'Men’s ski: waterproofing, breathability and taped seams sit beside the product imagery.' },
-        ],
-      },
-      {
-        id: 'printed', label: 'Printed application', title: 'Carry the layout through to print.',
-        paragraphs: ['The women’s ski spread carries the same layered photography and feature callouts across the fold of the printed book.'],
-        treatment: 'wide', figures: [
-          { image: 'graphics/lookbook-printed.webp', alt: 'Open printed lookbook held in two hands, showing the women’s skiwear spread.', caption: 'The printed women’s skiwear spread.' },
+          { image: 'graphics/nov4-lookbook-final-6.webp', alt: 'Photographed printed lookbook pages showing an introductory landscape spread and men’s fleece.', caption: 'Final lookbook — introduction and men’s fleece.' },
+          { image: 'graphics/nov4-lookbook-final-7.webp', alt: 'Photographed printed lookbook pages showing women’s padded jackets and men’s ski clothing with circular technical callouts.', caption: 'Final lookbook — women’s padded jackets and men’s ski.' },
+          { image: 'graphics/nov4-lookbook-final-9.webp', alt: 'Photographed printed lookbook pages showing children’s skiwear and women’s padded jackets.', caption: 'Final lookbook — children’s ski and women’s padded jackets.' },
+          { image: 'graphics/nov4-lookbook-final-10.webp', alt: 'Photographed printed lookbook pages showing men’s and women’s ski clothing alongside men’s and women’s newness.', caption: 'Final lookbook — skiwear and newness.' },
         ],
       },
     ],
@@ -144,10 +95,10 @@ export const graphicProjects: Project[] = [
     summary: 'A bright seasonal campaign, developed through three visual routes and carried into window and fixture displays.',
     intro: 'I created a new visual direction for Mountain Warehouse’s festival promotion, translating summer colour and energy into a window poster and smaller in-store displays.',
     tags: ['Campaign', 'POS', 'Visual direction'],
-    cover: 'graphics/festival-shopfront.webp',
-    coverAlt: 'Mountain Warehouse shopfront with the festival campaign in the window.',
-    hero: 'graphics/festival-shopfront.webp',
-    heroAlt: 'Mountain Warehouse shopfront with a yellow, orange and green festival promotion in the window.',
+    cover: 'graphics/festivals-pos-arrangement.webp',
+    coverAlt: 'Festival campaign arrangement showing a poster, square artwork, circular window vinyl, horizontal POS and colour swatches.',
+    hero: 'graphics/festivals-pos-arrangement.webp',
+    heroAlt: 'Festival campaign arrangement showing a poster, square artwork, circular window vinyl, horizontal POS and colour swatches.',
     stage: 'festival', preview: ['graphics/festival-poster.webp', 'graphics/festival-store.webp'],
     sections: [
       {

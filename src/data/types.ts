@@ -12,6 +12,7 @@ export interface SectionBlock {
   figures?: Figure[];
   treatment?: FigureTreatment;
   steps?: { label: string; text: string }[];
+  findings?: { title: string; observation: string; responseLabel: string; response: string }[];
   caption?: string;
 }
 export interface Section {
@@ -34,6 +35,8 @@ export interface Project {
   kind: string;
   role: string;
   status: string;
+  contextLabel?: string;
+  credit?: string;
   summary: string;
   intro: string;
   tags: string[];
